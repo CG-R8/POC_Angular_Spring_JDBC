@@ -47,7 +47,7 @@ public class EmployeeService {
 		return employeeRepository.findAll();
 	}
 	
-	public Optional<Employee> finOne(Integer id) {
+	public Optional<Employee> findOne(Integer id) {
 		return employeeRepository.findById(id);
 	}
 	
