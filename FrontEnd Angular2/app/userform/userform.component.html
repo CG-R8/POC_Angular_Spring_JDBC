@@ -1,0 +1,57 @@
+<h1></h1>
+<br> <br>
+
+<div class="container">
+<h2>Employee Data</h2>
+<form #myForm="ngForm">
+<div class="form-group">
+<label>Name</label>
+<input type="text" #nameRef="ngModel" minlength="4" class="form-control" name="email"  [(ngModel)]="temp.name" placeholder="Enter employee name">
+<div [hidden]="nameRef.valid" class="alert alert-danger">
+  Please enter name of min. 4 characters 
+</div>
+
+<label>Salary</label>
+<input type="text" #salaryRef="ngModel" pattern="[0-9]+" class="form-control" name="Salary"  [(ngModel)]="temp.salary" placeholder="Enter employee Salary">
+<div [hidden]="salaryRef.valid" class="alert alert-danger">
+  Please enter digits 
+</div>
+
+
+<label>Department</label>
+<input type="text" #defRef="ngModel"  class="form-control" name="department"  [(ngModel)]="temp.department" placeholder="Enter employee department">
+<div [hidden]="defRef.valid" class="alert alert-danger">
+  Please enter department of min. 4 characters 
+</div>
+
+
+<div>
+    <br>
+    
+  <button (click) = "addEmployee()">Add details to table</button>
+  &nbsp; &nbsp;&nbsp;&nbsp;
+  <button (click)="createPost(employees)">Add to Databse</button>
+  </div>
+
+
+</div>
+<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+</form>
+</div>
+
+<div *ngIf="employees[0]">
+    <table class="table table-striped">
+        <tr style="width: 20%">
+          <th> Name </th>
+          <th> Salary </th> 
+          <th> Department </th>
+        </tr>
+        
+         <tr *ngFor = "let employee of employees">
+           <td>{{employee.name}}</td>
+           <td>{{employee.salary}}</td>
+           <td>{{employee.department}}</td>
+         </tr>   
+      </table>
+
+</div>
