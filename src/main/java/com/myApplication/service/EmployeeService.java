@@ -29,19 +29,16 @@ public class EmployeeService {
 	}
 
 	public Employee save(Employee employee) {
-		
 		if(employee.getId()!=null && employeeRepository.existsById(employee.getId())) {
-			throw new EntityExistsException("There is alraedy existing entity with such ID in DB " );
+			throw new EntityExistsException("Entry already present in DB " );
 		}
 		return employeeRepository.save(employee);
 	}
 	
-	public Employee update(Employee employee) {
-		if(employee.getId()!=null && employeeRepository.existsById(employee.getId())) {
-			throw new EntityExistsException("There is alraedy existing entity with such ID in DB " );
-		}
-		return employeeRepository.save(employee);
+	public List<Employee> saveAll(List<Employee> employees) {
+		return employeeRepository.saveAll(employees); 
 	}
+	
 	
 	public List<Employee> findAll(){
 		return employeeRepository.findAll();
@@ -50,8 +47,5 @@ public class EmployeeService {
 	public Optional<Employee> findOne(Integer id) {
 		return employeeRepository.findById(id);
 	}
-	
-	public void delete(Integer id) {
-		employeeRepository.deleteById(id);
-	}
+
 }
